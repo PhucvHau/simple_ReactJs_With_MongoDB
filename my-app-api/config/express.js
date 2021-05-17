@@ -1,0 +1,15 @@
+var createError = require('http-errors')
+var express = require('express')
+var path = require('path')
+var cookieParser = require('cookie-parser')
+var logger = require('morgan')
+var app = express()
+var bodyParser = require('body-parser')
+var cors = require('cors')
+app.use(bodyParser.urlencoded())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(logger('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' }))
+app.use(cors())
+
+module.exports = app
